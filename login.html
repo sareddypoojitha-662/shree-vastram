@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sree vastram</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap"
+      rel="stylesheet"/>
+
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="navbar">
+  <div class="logo">Sree Vastram</div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="cotton.html">Cotton Suits</a></li>
+      <li><a href="saree.html">Sarees</a></li>
+      <li><a href="homedecor.html">Home Decor</a></li>
+      
+
+      <!-- 📱 Will show only in Mobile Toggle -->
+      <li class="mobile-only"><a href="cart.html">🛒 Cart</a></li>
+      <li class="mobile-only"><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-icons">
+    <button class="cart" onclick="location.href='cart.html'">🛒 Cart</button>
+    <button class="login btn" onclick="location.href='login.html'">Login</button>
+    
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+
+    <div class="login-container">
+    <h2>Login</h2>
+
+    <form action="#">
+      <input type="email" placeholder="Enter Email" required>
+      <input type="password" placeholder="Enter Password" required>
+
+      <button type="submit" class="btn login-submit">Login</button>
+
+      <p class="login-note">
+        Don't have an account? <a href="#">Register</a>
+      </p>
+    </form>
+
+    <button class="back-home-btn" onclick="location.href='index.html'">⬅ Back to Home</button>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sree vastram</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap"
+      rel="stylesheet"/>
+
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="navbar">
+  <div class="logo">Sree Vastram</div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cotton.html">Cotton Suits</a></li>
+      <li><a href="saree.html">Sarees</a></li>
+      <li><a href="homedecor.html">Home Decor</a></li>
+      
+
+      <!-- 📱 Will show only in Mobile Toggle -->
+      <li class="mobile-only"><a href="cart.html">🛒 Cart</a></li>
+      <li class="mobile-only"><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-icons">
+    <button class="cart" onclick="location.href='cart.html'">🛒 Cart</button>
+    <button class="login btn" onclick="location.href='login.html'">Login</button>
+    
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+
+
+
+<section id="clothes" class="clothes-section">
+  <h2 class="section-title">Cotton Suits</h2>
+  <div id="product-list" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
+  
+    <div class="clothes-card">
+      <a href="product-details.html?id=1">
+        <img src="https://image2url.com/images/1763017081285-618612d2-a11e-4ad2-a1cd-f817b4b15fc6.jpg" 
+             alt="Linen Cotton Suit">
+      </a>
+      <h3>Linen Cotton Suit</h3>
+    </div>
+
+    <div class="clothes-card">
+      <a href="product-details.html?id=2">
+        <img src="https://image2url.com/images/1763098828408-234e33cf-97db-4d57-aa87-489d271071fb.jpg" 
+             alt="Stitched cotton suit">
+      </a>
+      <h3>Silk Kurti</h3>
+    </div>
+
+    <div class="clothes-card">
+      <a href="product-details.html?id=3">
+        <img src="https://image2url.com/images/1763099180326-57d1c519-798d-482a-96e0-71140a0c6a2d.jpg" 
+             alt="Cotton Anarkali">
+      </a>
+      <h3>Linen Cotton Suit</h3>
+    </div>
+
+    <div class="clothes-card">
+      <a href="product-details.html?id=4">
+        <img src="https://image2url.com/images/1763099829060-0d6db765-d8de-4859-b731-19649e13bc3a.jpg" 
+             alt="Stitched cotton suit">
+      </a>
+      <h3>Party Wear Gown</h3>
+    </div>
+
+  </div>
+</body>
+<div class="back-home-box">
+  <button class="back-home-btn" onclick="location.href='index.html'">⬅ Back to Home</button>
+</div>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sree vastram</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap"
+      rel="stylesheet"
+    />
+
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+<header class="navbar">
+  <div class="logo">Sree Vastram</div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cotton.html">Cotton Suits</a></li>
+      <li><a href="saree.html">Sarees</a></li>
+      <li><a href="homedecor.html">Home Decor</a></li>
+      
+
+      <li class="mobile-only"><a href="cart.html">🛒 Cart</a></li>
+      <li class="mobile-only"><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-icons">
+    <button class="cart" onclick="location.href='cart.html'">🛒 Cart</button>
+    <button class="login btn" onclick="location.href='login.html'">Login</button>
+
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+    <div class="product-details">
+      <img id="productImage" src="" alt="Product Image">
+
+      <div class="info">
+        <h2 id="productName"></h2>
+        <p id="productDesc"></p>
+
+        <h4>Select Color:</h4>
+        <div id="colorOptions" style="display:flex;gap:10px;flex-wrap:wrap;"></div>
+
+        <h4>Select Size:</h4>
+        <select id="sizeSelect"></select>
+
+        <button class="add-btn" onclick="addToCart()">Add to Cart 🛒</button>
+        <button class="buy-btn" id="buyNowBtn">Buy Now ⚡</button>
+
+        <button class="btn btn-continue" onclick="location.href='index.html'">Continue Shopping</button>
+
+      </div>
+    </div>
+
+<script>
+/* -------------------------
+      PRODUCT DATA
+------------------------- */
+const products = {
+  1: {
+    name: "Linen Cotton Suit",
+    desc: "Bagru Hand Block Printed Linen Suits With Zari Border , Top and Duppata size-2.50+2.50mtrs , Bottom-2.50mtrs",
+    price: 1680,
+    images: {
+      pink: "https://image2url.com/images/1763017081285-618612d2-a11e-4ad2-a1cd-f817b4b15fc6.jpg",
+      green: "https://image2url.com/images/1763040639179-460cc0d5-c77d-47b6-ae87-f9b9ad74e166.jpg",
+      yellow: "https://image2url.com/images/1763040581576-0e5c302e-2f30-4b21-8745-dbb75996fe86.jpg"
+    }
+  },
+
+  2: {
+    name: "Linen Cotton Suit",
+    desc: "All New Exclusive Collection of Hand Block Printed 'Stitched' Cotton Suits With Cotton Dupatta",
+    price: 1500,
+    images: {
+      pink: "https://image2url.com/images/1763098533909-fca64a7f-d91b-450c-a132-5196cf5779a0.jpg",
+      peach: "https://image2url.com/images/1763098704744-b16a56f0-d177-47e9-81a3-1287cd67a291.jpg",
+      violet: "https://image2url.com/images/1763098828408-234e33cf-97db-4d57-aa87-489d271071fb.jpg"
+    },
+    sizes: ["M", "L", "XL"]
+  },
+
+  3: {
+    name: "Linen Cotton Suit",
+    desc: "Bagru Hand Block Printed Linen Suits With Zari Border👌",
+    price: 1100,
+    images: {
+      yellow: "https://image2url.com/images/1763099180326-57d1c519-798d-482a-96e0-71140a0c6a2d.jpg",
+      green: "https://image2url.com/images/1763099301213-1e0b2f73-c641-4dec-8b23-f1082ab9f20d.jpg",
+      maroon: "https://image2url.com/images/1763099361169-864ff32b-e252-4ee8-8177-8595cf5b6272.jpg"
+    },
+    sizes: ["S", "M", "L"]
+  },
+
+  4: {
+    name: "Linen Cotton Suit",
+    desc: "Bagru Hand Block Printed Linen Suits With Zari Border , Top and Duppata size-2.50+2.50mtrs , Bottom-2.50mtrs",
+    price: 1680,
+    images: {
+      blue: "https://image2url.com/images/1763099829060-0d6db765-d8de-4859-b731-19649e13bc3a.jpg",
+      black: "https://image2url.com/images/1763099757480-cba15e86-6f41-422f-94ef-4adffe96ea09.jpg",
+      navyblue: "https://image2url.com/images/1763099901324-b91ededf-8446-4efd-95bc-b89b3f3d63cd.jpg"
+    },
+    sizes: ["M", "L", "XL", "XXL"]
+  },
+
+  5: {
+    name: "Uppada Saree",
+    desc: "👉light weight sarees🍇 👉Rich pallu and plain blouse with border 👉pattu saree Pure Uppada",
+    price: 5850,
+    images: {
+      blue: "https://image2url.com/images/1763090728758-aad2b18c-cb9b-4e15-beb2-ad70632d383b.jpg",
+      white: "https://image2url.com/images/1763090848784-e6176f68-8efd-4b06-97df-016e72752cbd.jpg"
+    }
+  },
+
+  6: {
+    name: "Uppada Saree",
+    desc: "👉light weight sarees🍇 👉Rich pallu and plain blouse with border 👉pattu saree Pure Uppada",
+    price: 5850,
+    images: {
+      green: "https://image2url.com/images/1763090803821-1d6cdf1c-80fe-4a61-97d7-ce9f42f7dbad.jpg",
+      blue: "https://image2url.com/images/1763090772841-2a531e52-39db-4e24-9a35-5014dce38524.jpg"
+    }
+  },
+
+  7: {
+    name: "Uppada Saree",
+    desc: "👉light weight sarees🍇 👉Rich pallu and plain blouse with border 👉pattu saree Pure Uppada",
+    price: 5850,
+    images: {
+      orange: "https://image2url.com/images/1763101038593-1f4aad6b-464c-4abf-aec7-2ac3344652e9.jpg",
+      green: "https://image2url.com/images/1763101096432-102ad710-540b-43b9-a6fe-a5c4b7416106.jpg",
+      brown: "https://image2url.com/images/1763101308393-db70d9b7-1922-4621-a570-1f78248c3cac.jpg"
+    }
+  },
+
+  8: {
+    name: "Uppada Saree",
+    desc: "👉light weight sarees🍇 👉Rich pallu and plain blouse with border 👉pattu saree Pure Uppada",
+    price: 5850,
+    images: {
+      blue: "https://image2url.com/images/1763101565189-510306e2-f1c1-4761-ae60-2dbf4b59c62d.jpg",
+      red: "https://image2url.com/images/1763108595001-5fc0392c-8429-4a0f-adff-22c38f150bfa.jpg"
+    }
+  },
+
+  9: {
+    name: "Rangoli Mat",
+    desc: "MACHINE WASHABLE,QUALITY SUPERB SINGLE PIECE POLY PACKING,SIZE 60*60 CMS,BRAND CALORE,WEIGHT APPROX 700 GRAMS",
+    price: 650,
+    images: {
+      white: "https://image2url.com/images/1763107939866-2c01c161-d0fb-4f29-b665-070cb4d5221b.jpg"
+    }
+  },
+
+  10: {
+    name: "Rangoli Mat",
+    desc: "MACHINE WASHABLE,QUALITY SUPERB SINGLE PIECE POLY PACKING,SIZE 60*60 CMS,BRAND CALORE,WEIGHT APPROX 700 GRAMS",
+    price: 650,
+    images: {
+      white: "https://image2url.com/images/1763094488721-1ffe7db8-a9b4-46dd-a0f6-9acf13974ab5.jpg"
+    }
+  },
+
+  11: {
+    name: "Rangoli Mat",
+    desc: "MACHINE WASHABLE,QUALITY SUPERB SINGLE PIECE POLY PACKING,SIZE 60*60 CMS,BRAND CALORE,WEIGHT APPROX 700 GRAMS",
+    price: 650,
+    images: {
+      white: "https://image2url.com/images/1763094383703-c8684453-35c4-472f-878c-cb6f29ca393b.jpg"
+    }
+  },
+
+  12: {
+    name: "Rangoli Mat",
+    desc: "MACHINE WASHABLE,QUALITY SUPERB SINGLE PIECE POLY PACKING,SIZE 60*60 CMS,BRAND CALORE,WEIGHT APPROX 700 GRAMS",
+    price: 650,
+    images: {
+      white: "https://image2url.com/images/1763108078214-79dc5fe3-4900-46b2-81f8-54f607a77ec6.jpg"
+    }
+  }
+};
+
+/* -------------------------
+      LOAD PRODUCT
+------------------------- */
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const product = products[id];
+
+let selectedColor = "";
+let selectedImage = "";
+
+if (product) {
+  document.getElementById("productName").textContent = product.name;
+  document.getElementById("productDesc").textContent = product.desc;
+
+  const firstImg = Object.values(product.images)[0];
+  document.getElementById("productImage").src = firstImg;
+  selectedImage = firstImg;
+
+  // Colors
+  const colorDiv = document.getElementById("colorOptions");
+  for (const [color, img] of Object.entries(product.images)) {
+    const btn = document.createElement("button");
+    btn.style.width = "30px";
+    btn.style.height = "30px";
+    btn.style.borderRadius = "50%";
+    btn.style.border = "2px solid #ccc";
+    btn.style.cursor = "pointer";
+    btn.style.backgroundColor = color; 
+    btn.onclick = () => {
+      document.getElementById("productImage").src = img;
+      selectedColor = color;
+      selectedImage = img;
+    };
+    colorDiv.appendChild(btn);
+  }
+
+  // Sizes → If sizes missing → Free Size
+  const sizeSelect = document.getElementById("sizeSelect");
+  const sizeList = product.sizes || ["Free Size"];
+
+  sizeList.forEach(size => {
+    const opt = document.createElement("option");
+    opt.value = size;
+    opt.textContent = size;
+    sizeSelect.appendChild(opt);
+  });
+}
+
+/* -------------------------
+      ADD TO CART
+------------------------- */
+function addToCart() {
+  const chosenSize = document.getElementById("sizeSelect").value;
+  const finalColor = selectedColor || Object.keys(product.images)[0];
+
+  const item = {
+    name: product.name,
+    price: product.price,
+    color: finalColor,
+    size: chosenSize,
+    image: selectedImage
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(item);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(`${product.name} added to cart!`);
+  window.location.href = "cart.html";
+}
+
+/* -------------------------
+      BUY NOW
+------------------------- */
+/* -------------------------
+      BUY NOW
+------------------------- */
+function buyNow() {
+  const chosenSize = document.getElementById("sizeSelect").value;
+  const finalColor = selectedColor || Object.keys(product.images)[0];
+
+  const orderItem = {
+    name: product.name,
+    price: product.price,
+    color: finalColor,
+    size: chosenSize,
+    image: selectedImage
+  };
+
+  localStorage.setItem("orderItem", JSON.stringify(orderItem));
+  window.location.href = "order.html";
+}
+
+
+/* -------------------------
+      NAVBAR TOGGLE
+------------------------- */
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  hamburger.classList.toggle("toggle");
+});
+/* -------------------------
+      BUY NOW BUTTON FIX
+------------------------- */
+document.getElementById("buyNowBtn").addEventListener("click", buyNow);
+
+</script>
+
+</body>
+</html>
